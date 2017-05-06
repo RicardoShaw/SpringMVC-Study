@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 <h2>Student Information</h2>
-<form:form method="POST" action="addStudent">
+<form:form method="POST" action="addStudent" commandName="student">
 <form:errors path="*" cssClass="errorStyle" element="div" />
    <table>
     <tr>
@@ -43,6 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td>邮件：</td>
         <td><form:input path="email" /></td>
         <td><form:errors path="email" cssClass="error" /></td>
+    </tr>
+    
+    <tr>
+        <td>ID：</td>
+        <td><form:input path="id" /></td>
+        <td><form:errors path="id" cssClass="error" /></td>
     </tr>
     <tr>
         <td colspan="2">

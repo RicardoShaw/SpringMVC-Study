@@ -1,22 +1,24 @@
 package com.ricardo.springmvc.lesson1.form.bean;
  
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 
 public class Student {
-	@NotEmpty(message="用户名不能为空")
-	@Size(max=20,min=10,message="用户名不能小于10个字符且不能超过20个字符 ")
+	@NotEmpty
+	@Size(max=20,min=10)
 	private String name;
 	
 	
-	@Max(100)
-	@Min(12)
+	@Range(min=12,max=100)
 	private int age;
+	
+	@Range(min=12,max=100)
+	private Integer id;
 	
 	
 	@Email
@@ -39,6 +41,12 @@ public class Student {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

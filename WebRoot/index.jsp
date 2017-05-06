@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -36,5 +37,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="staticpageindex">lesson 2 & 3:staticpageindex</a><hr>
     
     <a href="fileUpload">lesson 5: upload</a><hr>
+    
+      <a href="rssfeed">lesson 6: RSS</a><hr>
+      
+	<a href="user/ricardo">Lesson 7 : XML</a><hr>
+	
+	<a href="pdf/pdfshow">Lesson 8 : PDF</a><hr>
+	
+	<a href="xlsshow">Lesson 8: Excel</a><hr>
   </body>
 </html>

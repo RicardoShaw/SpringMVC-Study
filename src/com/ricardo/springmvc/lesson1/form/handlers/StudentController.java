@@ -26,7 +26,7 @@ public class StudentController {
 		      return new ModelAndView("form/addStudent", "command", new Student());
 		   }
 
-		  @ModelAttribute("/student")
+		  @ModelAttribute("student")
 		   public Student createStudentModel() {    
 		      return new Student();
 		  }
@@ -34,7 +34,7 @@ public class StudentController {
 		
 		
 		@RequestMapping(value="/addStudent",method = RequestMethod.POST)
-		public String addStudent(@ModelAttribute("command")@Valid Student student,BindingResult result,Model model){
+		public String addStudent(@ModelAttribute("student")@Valid Student student,BindingResult result,Model model){
 			logger.info("message: addStudent is working...");
 			if(result.hasErrors()){
 				logger.error("addStudent failed!!!!");
@@ -45,6 +45,7 @@ public class StudentController {
 			model.addAttribute("name",student.getName());
 			model.addAttribute("age", student.getAge());
 			model.addAttribute("email",student.getEmail());
+			model.addAttribute("id",student.getId());
 
 
 			return "form/result";
