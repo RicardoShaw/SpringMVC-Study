@@ -3,41 +3,45 @@ package com.ricardo.springmvc.handlers;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-/* Controller ±íÊ¾ÊÇspringµÄ¿ØÖÆÆ÷*/
+/* Controller è¡¨ç¤ºæ˜¯springçš„æ§åˆ¶å™¨ å½“@Controllerä¸åŠ åœ°å€çš„æ—¶å€™ï¼Œæ˜¯é»˜è®¤çš„##/é¡¹ç›®åå­—/##*/
 @Controller
 public class HelloWorld {
 	private static Logger logger = Logger.getLogger(HelloWorld.class);
 	/**
-	 * 1.Ê¹ÓÃRequestMapping×¢½âÀ´Ó³ÉäÇëÇóµÄURL
-	 * 2.·µ»ØÖµ»áÍ¨¹ıÊÓÍ¼½âÎöÆ÷½âÎöÎªÊµ¼ÊµÄÎïÀíÊÓÍ¼
-	 * Í¨¹ıprefix+returnValue+suffix ÕâÑùµÄ·½Ê½µÃµ½Êµ¼ÊµÄÎïÀíÊÓÍ¼,È»ºó»á×ª·¢²Ù×÷
+	 * 1.ä½¿ç”¨RequestMappingæ³¨è§£æ¥æ˜ å°„è¯·æ±‚çš„URL
+	 * 2.è¿”å›å€¼ä¼šé€šè¿‡è§†å›¾è§£æå™¨è§£æä¸ºå®é™…çš„ç‰©ç†è§†å›¾
+	 * é€šè¿‡prefix+returnValue+suffix è¿™æ ·çš„æ–¹å¼å¾—åˆ°å®é™…çš„ç‰©ç†è§†å›¾,ç„¶åä¼šè½¬å‘æ“ä½œ
 	 * "/WEB-INF/views/success.jsp
 	 */
-	@RequestMapping("hello")
+	@RequestMapping("/hello")
 	public String hello(){
 		System.out.println("###############helloworld#######################");
-        // ¼ÇÂ¼debug¼¶±ğµÄĞÅÏ¢  
+        // è®°å½•debugçº§åˆ«çš„ä¿¡æ¯  
         logger.debug("This is debug message.");  
-        // ¼ÇÂ¼info¼¶±ğµÄĞÅÏ¢  
+        // è®°å½•infoçº§åˆ«çš„ä¿¡æ¯  
         logger.info("This is info message.");  
-        // ¼ÇÂ¼error¼¶±ğµÄĞÅÏ¢  
+        // è®°å½•errorçº§åˆ«çš„ä¿¡æ¯  
         logger.error("This is error message."); 
 		return "success";
 	}
 	
-//	@RequestMapping("/image/helloworld")
-//	public String Ihello(){
-//		System.out.println("xixi");
-//        // ¼ÇÂ¼debug¼¶±ğµÄĞÅÏ¢  
-//        logger.debug("This is debug message.");  
-//        // ¼ÇÂ¼info¼¶±ğµÄĞÅÏ¢  
-//        logger.info("This is info message.");  
-//        // ¼ÇÂ¼error¼¶±ğµÄĞÅÏ¢  
-//        logger.error("This is error message."); 
-//		return "success";
-//	}
+	@RequestMapping("/sayHello")
+	public String sayHello(Model model){
+		logger.info("sayHello is working!");
+		model.addAttribute("greeting", "Hello Wolrd!");
+		logger.info("sayHello returns hello page");
+		return "hello";
+	}
+	
+	@RequestMapping("/sayAgain")
+	public String sayAgain(Model model){
+		logger.info("sayHello is working!");
+		model.addAttribute("greeting", "Hello Wolrd!Again.");
+		logger.info("sayHello returns hello page");
+		return "hello";
+	}
 
 }
