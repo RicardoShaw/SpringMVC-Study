@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PdfViewController {
 	
 	
-	@RequestMapping(value="pdfshow",method=RequestMethod.GET)
+	@RequestMapping(value="pdfshow.pdf",method=RequestMethod.GET)
 	public ModelAndView show(){
 	      Map<String,String> userData = new HashMap<String,String>();
 	      userData.put("100", "Xiao.Lu");

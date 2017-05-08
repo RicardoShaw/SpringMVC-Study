@@ -40,10 +40,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
       <a href="rssfeed">lesson 6: RSS</a><hr>
       
-	<a href="user/ricardo">Lesson 7 : XML</a><hr>
+	<a href="user/xml/ricardo">Lesson 7 : XML</a><hr>
+	<a href="user/json/ricardo">Lesson 7 : XML</a><hr>
 	
-	<a href="pdf/pdfshow">Lesson 8 : PDF</a><hr>
+	<a href="pdf/pdfshow.pdf">Lesson 8 : PDF</a><hr>
 	
-	<a href="xlsshow">Lesson 8: Excel</a><hr>
+	<a href="xlsshow.xls">Lesson 8: Excel</a><hr>
+	
+	<a href="show/HelloWorld/this_is_a_content">Lesson 9: RESTSpring(@RestController可以直接返回实体对象)json风格</a><hr>
+	
   </body>
 </html>

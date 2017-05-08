@@ -18,8 +18,7 @@ public class Student {
 	private int age;
 	
 	@Range(min=12,max=100)
-	private Integer id;
-	
+	private Integer id;	
 	
 	@Email
 	private String email;

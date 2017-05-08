@@ -14,7 +14,7 @@ import com.ricardo.springmvc.lesson7.bean.User;
 @Controller
 public class XlsViewController {
 	
-	@RequestMapping(value="xlsshow",method=RequestMethod.GET)
+	@RequestMapping(value="xlsshow.xls",method=RequestMethod.GET)
 	public ModelAndView show(){
 		List<User> users = new ArrayList<User>();
 		for(int i = 0 ; i<10 ; i++){

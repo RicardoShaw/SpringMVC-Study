@@ -34,7 +34,7 @@ public class RSSController {
 	      items.add(content2);
 
 	      ModelAndView mav = new ModelAndView();
-	      mav.setViewName("rssViewer");
+	      mav.setViewName("rssview");
 	      mav.addObject("feedContent", items);
 	      
 	      return mav;

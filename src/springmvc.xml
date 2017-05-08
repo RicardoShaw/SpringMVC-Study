@@ -14,7 +14,7 @@
 	<!-- 启动注解型配置 -->
 	<mvc:annotation-driven/>  
 	
-	<bean id="rssViewer" class="com.ricardo.springmvc.lesson6.utils.RSSFeedViewer" />
+
 	
 	
 	<!-- 静态文件的配置 -->
@@ -39,51 +39,77 @@
 	<property name="order" value="0" />
 	</bean>
 
-	
-	
-
-    
-	<!-- ViewResolver -->
-	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" >
-		<property name="order" value="3" />
-	</bean>
-	
-	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- ViewClass:jstlview表示jsp末班页面需要使用JSTL标签库 -->
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-		<!-- @Controller-@RequestMapping return “something” -->
-		<property name="prefix" value="/WEB-INF/views/"></property>
-		<property name="suffix" value=".jsp"></property>
-		<!-- 访问/WEB-INF/views/something.jsp文件 -->	
-		<property name="order" value="5"></property>
-	</bean>
-	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
-   <property name="basename" value="views" />
-   <property name="order" value="2" />
-	</bean>
-	
-
+	<!-- 配置验证表格错误的信息文件 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
     	<property name="basename" value="messages" />
     	<!-- messages 对应/SRC/messages.properties文件,部署部分为\WEB-INF\classes\messages.properties文件-->
 	</bean>
 
-
-	
-	
 	<!-- 用于处理文件类的Resolver -->
 	 <bean id="multipartResolver"
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+    
+	<!-- ViewResolver 通过order设置优先级,使用多种ViewResolver -->
+	<!-- 方法一 InternalResourceViewResolver 进行jsp,html的配置  -->
+	<!-- 方法二 ResourceBundleViewResolver 通过views.propertiesjsp,html,pdf,json等的映射 -->
+	<!-- 方法三 XmlViewResolver通过location定义下的xml文件进行jsp,html,pdf,json等的映射 -->
+	<!-- 方法四 通过order设置优先级,使用多种viewResolver -->
+	<!-- 方法五 通过ContentNegotiatingViewResolver 对需要的ViewResolver进行配置管理 -->	
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+  
+    <!--<mvc:view-controller path="/" view-name="index"/>-->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="mediaTypes">
+            <value>
+                json=application/json
+                xml=application/xml
+                pdf=application/pdf
+            </value>
+        </property>
+        <property name="defaultContentType" value="text/html"/>
+
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="0"/>
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+
+
+        <property name="viewResolvers">
+            <list>
+            	<!-- ResourceBundleViewResolver需要在/SRC/views.properties里面设置对应的ModelAndView与Bean -->
+				<!-- 可以支持自定义视图以及jsp,html结尾的视图等等 -->
+
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+				
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					 <!--  <property name="order" value="1" /> -->
+					 <!-- ViewClass:jstlview表示jsp末班页面需要使用JSTL标签库 -->
+					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+					<!-- @Controller-@RequestMapping return “something” -->
+					<property name="prefix" value="/WEB-INF/views/"></property>
+					<property name="suffix" value=".jsp"></property>
+					<!-- 访问/WEB-INF/views/something.jsp文件 -->		
+				</bean>
+		
+
+
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+           		<bean id="rssview" class="com.ricardo.springmvc.lesson6.utils.RSSFeedViewer" />
+				<bean id="pdfview" class="com.ricardo.springmvc.lesson8.utils.UserPDFView"></bean>
+				<bean id="xlsview" class="com.ricardo.springmvc.lesson8.utils.UserExcelView"></bean>
+            	
+            </list>
+        </property>
+    </bean>
+
+
 	
-	
-	
-	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
-	  <property name="location">
-         <value>/WEB-INF/views.xml</value>
-      </property>
-      <property name="order" value="0" />
-	</bean>
+
 	
 	 
 	

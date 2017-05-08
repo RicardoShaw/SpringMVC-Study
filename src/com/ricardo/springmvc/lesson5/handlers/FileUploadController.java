@@ -42,7 +42,7 @@ public class FileUploadController {
 		logger.info("Fetching file");
 		MultipartFile multipartfile = file.getFile();
 		String uploadPath = context.getRealPath("")+File.separator+"WEB-INF"+ File.separator + "temp" + File.separator;
-		logger.error("message:       "+uploadPath);
+		logger.info("message:       "+uploadPath);
         FileCopyUtils.copy(file.getFile().getBytes(), new File(uploadPath+file.getFile().getOriginalFilename()));
         
         String fileName = multipartfile.getOriginalFilename();
