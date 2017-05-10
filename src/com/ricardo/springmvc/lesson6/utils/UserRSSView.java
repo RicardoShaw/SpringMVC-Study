@@ -14,7 +14,7 @@ import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Content;
 import com.rometools.rome.feed.rss.Item;
 
-public class RSSFeedViewer extends AbstractRssFeedView {
+public class UserRSSView extends AbstractRssFeedView {
 
 
 	   @Override

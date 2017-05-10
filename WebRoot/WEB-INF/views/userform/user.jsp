@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <h2>Student Information</h2>
-<form:form method="POST" action="addUser">
+<form:form method="POST" action="handlerInterceptor/addUser">
    <table>
     <tr>
         <td><form:label path="username">用户名：</form:label></td>

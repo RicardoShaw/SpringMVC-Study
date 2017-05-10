@@ -15,7 +15,7 @@ import com.ricardo.springmvc.lesson6.bean.RSSModel;
 @Controller
 public class RSSController {
 	
-	@RequestMapping(value="/rssfeed",method=RequestMethod.GET)
+	@RequestMapping(value="rssfeed",method=RequestMethod.GET)
 	public ModelAndView getFeedInRss(){
 		 List<RSSModel> items = new ArrayList<RSSModel>();
 
@@ -32,12 +32,9 @@ public class RSSController {
 	      content2.setSummary("Spring MVC tutorial summary...");
 	      content2.setCreateDate(new Date());
 	      items.add(content2);
-
-	      ModelAndView mav = new ModelAndView();
-	      mav.setViewName("rssview");
-	      mav.addObject("feedContent", items);
 	      
-	      return mav;
+	      
+	      return  new ModelAndView("rssview","feedContent",items);
 	}
 	
 	

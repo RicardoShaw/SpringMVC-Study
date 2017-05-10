@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <a href="addStudent">Lesson 1:Student form</a><hr>
     
-    <a href="user">Lesson 4: User form</a><hr>
+    <a href="handlerInterceptor/user">Lesson 4: User form</a><hr>
     
     <a href="staticpageindex">lesson 2 & 3:staticpageindex</a><hr>
     
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a href="rssfeed">lesson 6: RSS</a><hr>
       
 	<a href="user/xml/ricardo">Lesson 7 : XML</a><hr>
-	<a href="user/json/ricardo">Lesson 7 : XML</a><hr>
+	<a href="user/json/ricardo">Lesson 7 : Json</a><hr>
 	
 	<a href="pdf/pdfshow.pdf">Lesson 8 : PDF</a><hr>
 	

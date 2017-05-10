@@ -8,6 +8,11 @@
 
     <h2>提交用户信息 -</h2>
     <table>
+            <tr>
+            <td>附加信息：</td>
+            <td>${plus}</td>
+        </tr>
+    
         <tr>
             <td>用户名：</td>
             <td>${username}</td>

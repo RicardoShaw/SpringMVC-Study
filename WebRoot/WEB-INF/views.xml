@@ -10,16 +10,11 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd" >
 
 	<!-- 各种自定义View 都需要绑定自己的Viewer,而且Viewer必须继承org.springframework.web.servlet.view 中的一种 -->
-	<bean id="rssViewer" class="com.ricardo.springmvc.lesson6.utils.RSSFeedViewer" />
+	<bean id="rssview" class="com.ricardo.springmvc.lesson6.utils.UserRSSView"></bean>
 	<bean name="pdfview" class="com.ricardo.springmvc.lesson8.utils.UserPDFView"></bean>
 	<bean name="xlsview" class="com.ricardo.springmvc.lesson8.utils.UserExcelView"></bean>
 	
-	<!-- 一般的html和jsp就使用如下的默认设计  -->
-	<bean name="addStudent" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url">
-  		 <value>/WEB-INF/views/form/addStudent.jsp</value>
-  		</property>
-	</bean>
+
 	
 	
 	

@@ -86,7 +86,7 @@ public class MultiFileUploadController {
 				for (FileModel bucket : multifileModel.getFiles()) {
 					File file=new File(uploadPath + bucket.getFile().getOriginalFilename());
 					FileCopyUtils.copy(bucket.getFile().getBytes(), file);
-					fileNames.add(bucket.getFile().getOriginalFilename());
+					fileNames.add(file.getAbsolutePath());
 				
 				}
 

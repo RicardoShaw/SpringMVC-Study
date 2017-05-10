@@ -17,11 +17,18 @@
 	<!-- 启动注解型配置 -->
 	<mvc:annotation-driven/>  
 
-	<bean id="multiFileValidator" class="com.ricardo.springmvc.lesson5.validator.MultiFileValidator"></bean>
+	<!-- aop 面向切面 终于配置成功了-->
+	<aop:aspectj-autoproxy>
+		</aop:aspectj-autoproxy>
+	<bean name="loggerAspect" class="com.ricardo.springmvc.lesson10.aspect.LoggerAspect"/>
 
 
-	<!-- 静态文件的配置 (For Resources *.css, *.js, image,..)  -->
+
+
+
+	<!-- 静态文件的配置 (For Resources *.css, *.js, image,..) ,所有的handlerMapping以及HandlerResolver都绑定了 -->
 	<mvc:default-servlet-handler/>
+	
 	<mvc:resources location="/WEB-INF/views/staticPages/" mapping="/staticPages/**"></mvc:resources>
 	<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑ 将Location当中的路径匹配到@Controller文件中@RequestMapping -->
 	<!-- 在@RequestMapping中 return "redirect:staticPages/final.html"-->
@@ -29,18 +36,13 @@
 	
 	
 	
-	<!-- 通过@RequestMapping使用handler的HandlerMapping -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-   		<property name="order" value="1" />
-    </bean>
-    <!-- 2:HandlerAdapter -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
-  
+
+
 	
-	<!--  通过beanName查找Handler的HandlerMapping -->
+	<!--  
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
 	<property name="order" value="0" />
-	</bean>
+	</bean>通过beanName查找Handler的HandlerMapping -->
 
 	<!-- 配置验证表格错误的信息文件 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -65,9 +67,10 @@
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="mediaTypes">
             <value>
-                json=application/json
+                json=text/plain
                 xml=application/xml
                 pdf=application/pdf
+
             </value>
         </property>
         <property name="defaultContentType" value="text/html"/>
@@ -77,13 +80,24 @@
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="0"/>
         <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
-
-
         <property name="viewResolvers">
             <list>
-            	<!-- ResourceBundleViewResolver需要在/SRC/views.properties里面设置对应的ModelAndView与Bean -->
-				<!-- 可以支持自定义视图以及jsp,html结尾的视图等等 -->
-			<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<!-- XmlViewResolver也可以通过location下的xml文件设置来支持各种视图  感觉和ResourceBundleViewResolver差不多 -->
+				<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+	 			 <property name="order" value="1" /> 
+	  				<property name="location">
+        			 <value>/WEB-INF/views.xml</value>
+      				</property>  
+      			</bean>
+				
+				
+            	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">  
+					 <!--  <property name="order" value="1" /> -->
+					<property name="basename" value="views"/>    
+					<property name="defaultParentView" value="parentView"/>	
+				</bean>
+	
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 					 <!--  <property name="order" value="1" /> -->
 					 <!-- ViewClass:jstlview表示jsp末班页面需要使用JSTL标签库 -->
 					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
@@ -92,17 +106,16 @@
 					<property name="suffix" value=".jsp"></property>
 					<!-- 访问/WEB-INF/views/something.jsp文件 -->		
 				</bean>
-				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-				
-	
-		
 
+
+            	<!-- ResourceBundleViewResolver需要在/SRC/views.properties里面设置对应的ModelAndView与Bean -->
+				<!-- 可以支持自定义视图以及jsp,html结尾的视图等等 -->
 
             </list>
         </property>
         <property name="defaultViews">
             <list>
-           		<bean id="rssview" class="com.ricardo.springmvc.lesson6.utils.RSSFeedViewer" />
+           		<bean id="rssview" class="com.ricardo.springmvc.lesson6.utils.UserRSSView"></bean>
 				<bean id="pdfview" class="com.ricardo.springmvc.lesson8.utils.UserPDFView"></bean>
 				<bean id="xlsview" class="com.ricardo.springmvc.lesson8.utils.UserExcelView"></bean>
             	
@@ -111,7 +124,15 @@
     </bean>
 
 
-	
+
+
+	    <!-- interceptor setting -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/handlerInterceptor/addUser"/>
+            <bean class="com.ricardo.springmvc.lesson9.interceptor.UserInterceptor"></bean>
+        </mvc:interceptor>        
+    </mvc:interceptors>
 
 	
 	 
