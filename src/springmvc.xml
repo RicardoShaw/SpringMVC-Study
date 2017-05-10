@@ -17,7 +17,6 @@
 	<!-- 启动注解型配置 -->
 	<mvc:annotation-driven/>  
 
-	<bean id="multiFileValidator" class="com.ricardo.springmvc.lesson5.validator.MultiFileValidator"></bean>
 
 
 	<!-- 静态文件的配置 (For Resources *.css, *.js, image,..)  -->

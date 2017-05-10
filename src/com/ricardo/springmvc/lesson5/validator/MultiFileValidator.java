@@ -9,6 +9,7 @@
 */
 package com.ricardo.springmvc.lesson5.validator;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -23,6 +24,7 @@ import com.ricardo.springmvc.lesson5.bean.MultiFileModel;
  * @date 2017年5月10日 下午3:44:19 
  *  
  */
+@Controller
 public class MultiFileValidator implements Validator {
 
 	/* (非 Javadoc) 
