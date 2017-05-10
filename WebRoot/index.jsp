@@ -38,6 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <a href="fileUpload">lesson 5: upload</a><hr>
     
+    <a href="multifileUpload">lesson 5: multiupload</a><hr>
+    
       <a href="rssfeed">lesson 6: RSS</a><hr>
       
 	<a href="user/xml/ricardo">Lesson 7 : XML</a><hr>

@@ -23,12 +23,13 @@ import com.ricardo.springmvc.lesson5.bean.FileModel;
 
 @Controller
 public class FileUploadController {
+	
 	@Autowired
 	ServletContext context;
 	private static Logger logger = Logger.getLogger(FileUploadController.class);
 	
 	
-	@RequestMapping(value="/fileUpload",method=RequestMethod.GET)
+	@RequestMapping(value="fileUpload",method=RequestMethod.GET)
 	public ModelAndView addfileUpload(){
 		return new ModelAndView("/file/fileUpload","filecommand",new FileModel());
 	}
