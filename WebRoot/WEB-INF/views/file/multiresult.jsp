@@ -14,7 +14,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 		<c:forEach var="fileName" items="${fileNames}">
+
 				File:<strong>${fileName}</strong> uploaded successfully<br/>
+
+				File  <strong>${fileName}</strong> uploaded successfully<br/>
+
 		</c:forEach>
 		
 </body>

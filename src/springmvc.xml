@@ -17,6 +17,7 @@
 	<!-- 启动注解型配置 -->
 	<mvc:annotation-driven/>  
 
+
 	<!-- aop 面向切面 终于配置成功了-->
 	<aop:aspectj-autoproxy>
 		</aop:aspectj-autoproxy>

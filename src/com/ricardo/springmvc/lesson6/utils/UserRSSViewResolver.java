@@ -13,8 +13,6 @@ import java.util.Locale;
 
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
-import org.w3c.dom.views.AbstractView;
-import org.w3c.dom.views.DocumentView;
 
 /** 
  * @ClassName: UserRSSViewResolver 

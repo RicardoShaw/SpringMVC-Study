@@ -1,6 +1,5 @@
 package com.ricardo.springmvc.lesson8.utils;
 
-import java.io.FileOutputStream;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.lowagie.text.Chunk;
-import com.lowagie.text.Font;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.Table;
-import com.lowagie.text.pdf.PdfWriter;
 
 
 
