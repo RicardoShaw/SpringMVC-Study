@@ -9,8 +9,6 @@
 */
 package com.ricardo.springmvc.lesson9.interceptor;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -70,7 +68,7 @@ public class UserInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		logger.info("message:   "+"postHandler is working");
-		modelAndView.addObject("plus", "这是一条附加消息"+LocalDate.now().toString()+" "+LocalTime.now().toString());
+		modelAndView.addObject("plus", "这是一条附加消息");
 	}
 
 	/* (非 Javadoc) 

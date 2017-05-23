@@ -22,6 +22,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 /** 
  * @ClassName: LoggerAspect 
@@ -31,8 +32,8 @@ import org.aspectj.lang.annotation.Pointcut;
  * @date 2017年5月10日 下午10:38:24 
  *  
  */
-
 @Aspect
+@Component
 public class LoggerAspect {
 	private static Logger logger = Logger.getLogger(LoggerAspect.class);
 	

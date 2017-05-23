@@ -11,8 +11,25 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	
+	<!-- 配置自动扫描的包 -->
+	<context:component-scan base-package="com.ricardo.springmvc.**"/>
+	
+	<context:annotation-config />  
 
+	
+	<!-- 在application.xml文件中配置<aop:aspectj-autoproxy/>，
+		 application中<context:component-scan/>扫描到的@Component@Aspect类会自动注册
+		 同时也只有application中<context:component-scan/>扫描到的@Component类可以被编织
+		 这里没有开启<mvc::component-scan/>所以@Controller的类无法被AOP代理
+	
+	-->
+	<aop:aspectj-autoproxy expose-proxy="true"> </aop:aspectj-autoproxy>
+	
+	<!-- 	<bean name="loggerAspect" class="com.ricardo.springmvc.lesson10.aspect.LoggerAspect"/>
+	 -->
 	<import resource="springmvc.xml"/>
+
 	
 	
 </beans>

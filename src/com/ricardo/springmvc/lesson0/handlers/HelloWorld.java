@@ -1,4 +1,4 @@
-package com.ricardo.springmvc.handlers;
+package com.ricardo.springmvc.lesson0.handlers;
 
 
 import org.apache.log4j.Logger;

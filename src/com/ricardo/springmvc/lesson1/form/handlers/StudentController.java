@@ -18,7 +18,7 @@ import com.ricardo.springmvc.lesson1.form.bean.Student;
 
 @Controller
 public class StudentController {
-		private static Logger logger = Logger.getLogger(StudentController.class);	
+	
 
 	
 		 @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
@@ -35,13 +35,13 @@ public class StudentController {
 		
 		@RequestMapping(value="/addStudent",method = RequestMethod.POST)
 		public String addStudent(@ModelAttribute("student")@Valid Student student,BindingResult result,Model model){
-			logger.info("message: addStudent is working...");
+		
 			if(result.hasErrors()){
-				logger.error("addStudent failed!!!!");
+
 				 return "form/addStudent";
 			}
 		
-			logger.info("addStudent successed!!!!");
+		
 			model.addAttribute("name",student.getName());
 			model.addAttribute("age", student.getAge());
 			model.addAttribute("email",student.getEmail());
